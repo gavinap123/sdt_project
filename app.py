@@ -17,12 +17,18 @@ df['is_4wd'].fillna(0.0, inplace=True)
 # Make a st header
 st.header('Vehicles Simulator Data App')
 
+# Make a checkbox using st.checkbox that changes the behavior of any of the above components
+show_histogram = st.checkbox('Show Histogram')
+
 # Plot Histogram with plotly.express
-# Plot histogram of price and change the color to be different for each make
-fig = px.histogram(df, x='price', nbins=150, title='Price Distribution by Make', color='make')
-# Show the chart in Streamlit
-st.plotly_chart(fig)
+if show_histogram:
+    fig = px.histogram(df, x='price', nbins=150, title='Price Distribution by Make', 
+                       color='make', color_discrete_sequence=px.colors.qualitative.Set1)
+    # Show the chart in Streamlit
+    st.plotly_chart(fig)
+
 # Plot a scatterplot in Streamlit
 odometer_year = px.scatter(df, x='odometer', y='model_year', title='Odometer Reading by Year', color='make')
 # Show the scatter plot in the Streamlit app
 st.plotly_chart(odometer_year)
+
