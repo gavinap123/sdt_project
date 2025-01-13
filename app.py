@@ -18,8 +18,7 @@ df['is_4wd'].fillna(0.0, inplace=True)
 st.header('Vehicles Simulator Data App')
 
 # Plot Histogram with plotly.express
-# Plot histogram of price
-fig = px.histogram(df['price'], nbins=150,title='Price Distribution')
-fig.update_xaxes(title='Price')
-#fig.yaxes(title='Frequency')
+# Plot histogram of price and change the color to be different for each make
+fig = px.histogram(df, x='price', nbins=150, title='Price Distribution by Make', color='make')
+# Show the chart in Streamlit
 st.plotly_chart(fig)
