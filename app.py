@@ -22,3 +22,7 @@ st.header('Vehicles Simulator Data App')
 fig = px.histogram(df, x='price', nbins=150, title='Price Distribution by Make', color='make')
 # Show the chart in Streamlit
 st.plotly_chart(fig)
+# Plot a scatterplot in Streamlit
+odometer_year = px.scatter(df, x='odometer', y='model_year', title='Odometer Reading by Year', color='make')
+# Show the scatter plot in the Streamlit app
+st.plotly_chart(odometer_year)
